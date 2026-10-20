@@ -1,0 +1,34 @@
+global_args:
+  seed: 42
+  device: "mps"
+  experiment_name: "testing"
+tokenizer_args:
+  vocab_size: 10000
+  special_tokens: 
+    - "<|endoftext|>"
+  tokenizer_path: "tokenizer"
+  vocab_filename: "tokenizer_vocab_10000.json"
+  merges_filename: "tokenizer_merges_10000.txt"
+train_args:
+  num_steps: 10000
+  learning_rate: 0.001
+  beta1: 0.9
+  beta2: 0.999
+  eps: 1e-8
+  weight_decay: 0.01
+  check_freq: 500
+  val_freq: 500
+  log_freq: 10
+model_args:
+  context_length: 256
+  num_layers: 4
+  num_heads: 16
+  rope_theta: 10000
+  d_model: 512
+  d_ff: 1344
+dataset_args:
+  batch_size: 16
+  train_dataset_filename: "TinyStoriesV2-GPT4-train.txt"
+  tokenized_train_filename: "tokenized_tinystories_train.npy"
+  val_dataset_filename: "TinyStoriesV2-GPT4-valid.txt"
+  tokenized_val_filename: "tokenized_tinystories_valid.npy"
